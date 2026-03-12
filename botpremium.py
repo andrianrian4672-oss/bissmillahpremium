@@ -86,38 +86,43 @@ def smart_print(bot_memory, text):
 
 # ================== API HANDLERS (KHUSUS PREMIUM - SNIPER MODE) ==================
 def get_waiting_premium_game():
-    MAX_PERCOBAAN = 10 
-    print(f"🔍 [{get_waktu()}] [{BOT_NAME}] Radar VIP SNIPER Aktif! Meretas jalur HOT API...")
+    print(f"\n🔍 [{get_waktu()}] [{BOT_NAME}] RADAR X-RAY AKTIF! Mengintip semua data room dari server...")
     
-    # 🔥 KITA SCAN 2 JALUR SEKALIGUS (Jalur Hot temuan Bos & Jalur Reguler) 🔥
+    # Kita scan 2 jalur sekaligus
     urls_to_scan = [f"{BASE_URL}/games/hot", f"{BASE_URL}/games?status=waiting"]
     
-    for attempt in range(1, MAX_PERCOBAAN + 1):
-        for url in urls_to_scan:
-            try:
-                response = requests.get(url, timeout=5) 
-                res = response.json()
-                
-                if res.get("success") and res.get("data"):
-                    for game in reversed(res["data"]):
-                        status_game = game.get("status", "").lower()
-                        entry_type = game.get("entryType", "paid").lower() # Default nganggep berbayar
-                        nama_game = game.get("name", "").lower()
-                        
-                        # 🎯 LOGIKA MUTLAK: Kalau waiting & BUKAN free (atau namanya ada 'premium') -> HAJAR!
-                        if status_game == "waiting" and (entry_type != "free" or "premium" in nama_game):
-                            print(f"✅ [{get_waktu()}] [{BOT_NAME}] NEMU ROOM VIP JALUR DALAM: {game.get('name')}")
-                            return game["id"]
-            except Exception as e:
-                pass
-                
-        if attempt < MAX_PERCOBAAN:
-            delay = random.uniform(0.2, 0.7) 
-            time.sleep(delay) 
+    for url in urls_to_scan:
+        try:
+            print(f"📡 Scan jalur: {url.split('.com')[-1]}")
+            res = requests.get(url, timeout=5).json()
             
-    print(f"⚠️ [{get_waktu()}] [{BOT_NAME}] Room VIP kosong. Ganti radar!")
+            if res.get("success") and res.get("data"):
+                games = res["data"]
+                
+                # Cek satu-satu semua room yang ada di dalam list
+                for game in games:
+                    st = game.get("status", "").lower()
+                    if st == "waiting":
+                        nama_room = game.get("name", "TanpaNama")
+                        tipe_entry = game.get("entryType", "TIDAK_ADA_DATA")
+                        
+                        # 🔥 CETAK SEMUA ROOM WAITING YANG KETEMU KE TERMINAL 🔥
+                        print(f"👀 KETEMU ROOM! Nama: '{nama_room}' | Tipe: '{tipe_entry}'")
+                        
+                        # Kalau tipenya bukan 'free', kita anggap ini VIP dan langsung hajar!
+                        if tipe_entry != "free":
+                            print(f"✅ [{BOT_NAME}] MENGUNCI TARGET VIP: {nama_room}!")
+                            return game["id"]
+            else:
+                print(f"⚠️ Jalur ini kosong / gada data.")
+                
+        except Exception as e:
+            print(f"💥 Error scan radar: {e}")
+            
+    print(f"❌ [{get_waktu()}] [{BOT_NAME}] Mata bot benar-benar tidak melihat ada room waiting satupun.")
+    time.sleep(2) # Jeda biar log gak jebol
     return None
-
+    
 def join_paid_game(game_id, private_key):
     print(f"📄 [{BOT_NAME}] Meminta kontrak EIP-712 untuk Room VIP...")
     try:
@@ -885,3 +890,4 @@ if __name__ == "__main__":
     except Exception as e:
 
         print(f"💥 [{BOT_NAME}] Crash sistem: {e}")
+
