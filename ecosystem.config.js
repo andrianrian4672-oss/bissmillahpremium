@@ -8,14 +8,6 @@ module.exports = {
         PRIVATE_KEY: process.env.PRIV_MAX 
       }
     },
-    { 
-      name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
-      env: { 
-        BOT_NAME: "Peaxel_Litee", 
-        API_KEY: process.env.API_LITE, 
-        PRIVATE_KEY: process.env.PRIV_LITE 
-      }
-    },
     {
       name: "Radar-Tele", script: "radartele.py", interpreter: "python3",
       env: { 
@@ -25,3 +17,4 @@ module.exports = {
     }
   ]
 };
+
