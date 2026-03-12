@@ -882,12 +882,20 @@ def main():
 # (Obat tidur dihapus karena sudah di-handle oleh run_mafia.py)
 if __name__ == "__main__":
     print("="*50)
-    print("💎 MENYALAKAN MESIN SUPER PEAXEL VIP 💎")
+    print(f"💎 MENYALAKAN MESIN SUPER PEAXEL VIP: {BOT_NAME} 💎")
     print("="*50)
-    try:
-        main()
-        print(f"🛑 [{BOT_NAME}] Operasi VIP selesai. Melapor kembali ke Markas (run_mafia)...")
-    except Exception as e:
+    
+    # 🔥 INI KUNCI LOOPING ABADINYA BOS! 🔥
+    while True:
+        try:
+            main() # Bot masuk game, main sampai kelar/mati, lalu fungsi ini selesai
+            
+            # Kalau main() udah selesai, dia bakal istirahat 5 detik lalu ngulang nyari room lagi!
+            print(f"\n🔄 [{get_waktu()}] [{BOT_NAME}] Match VIP selesai/gugur. Istirahat 5 detik sebelum berburu tiket baru...")
+            time.sleep(5)
+            
+        except Exception as e:
+            print(f"💥 [{BOT_NAME}] Crash sistem: {e}. Reboot otomatis dalam 5 detik...")
+            time.sleep(5)
 
-        print(f"💥 [{BOT_NAME}] Crash sistem: {e}")
 
