@@ -11,7 +11,7 @@ module.exports = {
     { 
       name: "VIP-Max", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "Peaxel_Maxx", 
+        BOT_NAME: "Peaxel_Premium", 
         API_KEY: process.env.API_PREMIUM, 
         PRIVATE_KEY: process.env.PRIV_PREMIUM 
       }
@@ -25,5 +25,6 @@ module.exports = {
     }
   ]
 };
+
 
 
