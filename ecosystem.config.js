@@ -11,7 +11,7 @@ module.exports = {
     { 
       name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "Peaxel_Lite", 
+        BOT_NAME: "Peaxel_Premium", 
         API_KEY: process.env.API_LITE, 
         PRIVATE_KEY: process.env.PRIV_LITE 
       }
@@ -26,4 +26,5 @@ module.exports = {
     }
   ]
 };
+
 
