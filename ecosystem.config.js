@@ -3,7 +3,7 @@ module.exports = {
     { 
       name: "VIP-Max", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "PeaxelMax", 
+        BOT_NAME: "Peaxel_Maxx", 
         API_KEY: process.env.API_MAX, 
         PRIVATE_KEY: process.env.PRIV_MAX 
       }
@@ -11,22 +11,13 @@ module.exports = {
     { 
       name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "Peaxel_Premium", 
+        BOT_NAME: "Peaxel_Litee", 
         API_KEY: process.env.API_LITE, 
         PRIVATE_KEY: process.env.PRIV_LITE 
       }
     },
-    { 
-      name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
-      env: { 
-        BOT_NAME: "Peaxel_Dexlite", 
-        API_KEY: process.env.API_DEX, 
-        PRIVATE_KEY: process.env.PRIV_DEX 
-      }
-    },
-    { 
+    {
       name: "Radar-Tele", script: "radartele.py", interpreter: "python3",
-      // Pastikan TELEGRAM_TOKEN dan TELEGRAM_CHAT_ID sudah ada di Variables Railway
       env: { 
         TELEGRAM_TOKEN: process.env.TELEGRAM_TOKEN,
         TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID
@@ -34,6 +25,3 @@ module.exports = {
     }
   ]
 };
-
-
-
