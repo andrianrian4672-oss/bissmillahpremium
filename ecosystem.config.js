@@ -17,6 +17,14 @@ module.exports = {
       }
     },
     { 
+      name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
+      env: { 
+        BOT_NAME: "Peaxel_Dexlite", 
+        API_KEY: process.env.API_DEX, 
+        PRIVATE_KEY: process.env.PRIV_DEX 
+      }
+    },
+    { 
       name: "Radar-Tele", script: "radartele.py", interpreter: "python3",
       // Pastikan TELEGRAM_TOKEN dan TELEGRAM_CHAT_ID sudah ada di Variables Railway
       env: { 
@@ -26,5 +34,6 @@ module.exports = {
     }
   ]
 };
+
 
 
