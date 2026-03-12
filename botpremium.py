@@ -86,28 +86,32 @@ def smart_print(bot_memory, text):
 
 # ================== API HANDLERS (KHUSUS PREMIUM - SNIPER MODE) ==================
 def get_waiting_premium_game():
-    MAX_PERCOBAAN = 10 # 🚀 Tetap ngotot
-    print(f"🔍 [{get_waktu()}] [{BOT_NAME}] Radar VIP SNIPER Aktif! Mencari room PAID/PREMIUM...")
-    url = f"{BASE_URL}/games?status=waiting"
+    MAX_PERCOBAAN = 10 
+    print(f"🔍 [{get_waktu()}] [{BOT_NAME}] Radar VIP SNIPER Aktif! Meretas jalur HOT API...")
+    
+    # 🔥 KITA SCAN 2 JALUR SEKALIGUS (Jalur Hot temuan Bos & Jalur Reguler) 🔥
+    urls_to_scan = [f"{BASE_URL}/games/hot", f"{BASE_URL}/games?status=waiting"]
     
     for attempt in range(1, MAX_PERCOBAAN + 1):
-        try:
-            response = requests.get(url, timeout=5) # 🚀 Timeout dicepetin jadi 5s
-            res = response.json()
-            
-            if res.get("success") and res.get("data"):
-                for game in reversed(res["data"]):
-                    status_game = game.get("status", "").lower()
-                    entry_type = game.get("entryType", "").lower()
-                    
-                    if status_game == "waiting" and entry_type in ["paid", "premium"]:
-                        print(f"✅ [{get_waktu()}] [{BOT_NAME}] Nemu Room VIP: {game.get('name')}")
-                        return game["id"]
-        except Exception as e:
-            pass
-            
+        for url in urls_to_scan:
+            try:
+                response = requests.get(url, timeout=5) 
+                res = response.json()
+                
+                if res.get("success") and res.get("data"):
+                    for game in reversed(res["data"]):
+                        status_game = game.get("status", "").lower()
+                        entry_type = game.get("entryType", "paid").lower() # Default nganggep berbayar
+                        nama_game = game.get("name", "").lower()
+                        
+                        # 🎯 LOGIKA MUTLAK: Kalau waiting & BUKAN free (atau namanya ada 'premium') -> HAJAR!
+                        if status_game == "waiting" and (entry_type != "free" or "premium" in nama_game):
+                            print(f"✅ [{get_waktu()}] [{BOT_NAME}] NEMU ROOM VIP JALUR DALAM: {game.get('name')}")
+                            return game["id"]
+            except Exception as e:
+                pass
+                
         if attempt < MAX_PERCOBAAN:
-            # 🔥 JEDA SUPER SINGKAT (0.2 - 0.7 Detik) 🔥
             delay = random.uniform(0.2, 0.7) 
             time.sleep(delay) 
             
@@ -879,4 +883,5 @@ if __name__ == "__main__":
         main()
         print(f"🛑 [{BOT_NAME}] Operasi VIP selesai. Melapor kembali ke Markas (run_mafia)...")
     except Exception as e:
+
         print(f"💥 [{BOT_NAME}] Crash sistem: {e}")
