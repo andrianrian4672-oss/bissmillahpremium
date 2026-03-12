@@ -71,10 +71,10 @@ while True:
         elif saldo_sekarang > saldo_terakhir:
             cuan = saldo_sekarang - saldo_terakhir
             pesan = (
-                f"🎉🎉 BOOYAH! VIP JACKPOT! 🎉🎉\n\n"
+                f"🎉🎉 GG! VIP JACKPOT! 🎉🎉\n\n"
                 f"📈 Setoran Masuk: +{cuan} MOLTZ\n"
                 f"🏦 Total Brankas: {saldo_sekarang} MOLTZ\n\n"
-                f"🔥 Gas terus Operasi Monopoli Bosku!"
+                f"🔥 Gas terus Operasi Monopoli!"
             )
             print("Pesan terkirim ke Telegram!")
             kirim_telegram(pesan)
@@ -87,5 +87,6 @@ while True:
 
     except Exception as e:
         print(f"Lagi ngelag baca Blockchain... santai dulu.")
+
 
     time.sleep(CEK_INTERVAL)
