@@ -39,6 +39,14 @@ module.exports = {
         API_KEY: process.env.API_SOLAR, 
         PRIVATE_KEY: process.env.PRIV_SOLAR 
       }
+    },
+    { 
+      name: "Radar-Tele", script: "radartele.py", interpreter: "python3",
+      // Pastikan TELEGRAM_TOKEN dan TELEGRAM_CHAT_ID sudah ada di Variables Railway
+      env: { 
+        TELEGRAM_TOKEN: process.env.TELEGRAM_TOKEN,
+        TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID
+      }
     }
   ]
 };
