@@ -924,15 +924,15 @@ def main():
         
         if not dompet:
             fatal(f"🚨 FATAL: Dompet belum terdaftar di server! Hadiah bisa hangus! Daftarin dulu!")
-        if smoltz < 100:
-            fatal(f"💸 MISKIN JENDERAL! sMoltz cuma {smoltz}. Gembel dulu di Free Room cari 100 sMoltz!")
-        print(f"✅ Tiket Aman! (sMoltz: {smoltz}) | Rekening Aman: {dompet[:8]}...")
+        
+        # 🔥 JALUR SULTAN AKTIF: Pengecekan sMoltz DIMATIKAN! 🔥
+        # if smoltz < 100:
+        #     fatal(f"💸 MISKIN JENDERAL! sMoltz cuma {smoltz}. Gembel dulu di Free Room cari 100 sMoltz!")
+        
+        print(f"✅ Menggunakan Jalur Sultan Onchain! | Rekening Aman: {dompet[:8]}...")
     else:
         fatal(f"❌ Gagal ngecek akun server! API Key salah atau server down.")
     # 🔥 BATAS TAMBAHAN 🔥
-
-    game_id, agent_id = load_session()
-    resume_berhasil = False
     
     if game_id and agent_id:
         print(f"🔄 [{get_waktu()}] [{BOT_NAME}] Sesi VIP ditemukan! Coba RECONNECT...")
