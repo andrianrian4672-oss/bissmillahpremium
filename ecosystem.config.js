@@ -3,17 +3,41 @@ module.exports = {
     { 
       name: "VIP-Max", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "Peaxel_Maxx", 
+        BOT_NAME: "PeaxelMax", 
         API_KEY: process.env.API_MAX, 
         PRIVATE_KEY: process.env.PRIV_MAX 
       }
     },
     { 
-      name: "VIP-Max", script: "botpremium.py", interpreter: "python3",
+      name: "VIP-Lite", script: "botpremium.py", interpreter: "python3",
       env: { 
-        BOT_NAME: "Peaxel_Premium", 
-        API_KEY: process.env.API_PREMIUM, 
-        PRIVATE_KEY: process.env.PRIV_PREMIUM 
+        BOT_NAME: "PeaxelLite", 
+        API_KEY: process.env.API_LITE, 
+        PRIVATE_KEY: process.env.PRIV_LITE 
+      }
+    },
+    { 
+      name: "VIP-Turbo", script: "botpremium.py", interpreter: "python3",
+      env: { 
+        BOT_NAME: "PeaxelTurbo", 
+        API_KEY: process.env.API_TURBO, 
+        PRIVATE_KEY: process.env.PRIV_TURBO 
+      }
+    },
+    { 
+      name: "VIP-Dex", script: "botpremium.py", interpreter: "python3",
+      env: { 
+        BOT_NAME: "PeaxelDex", 
+        API_KEY: process.env.API_Dex, 
+        PRIVATE_KEY: process.env.PRIV_Dex 
+      }
+    },
+    { 
+      name: "VIP-Solar", script: "botpremium.py", interpreter: "python3",
+      env: { 
+        BOT_NAME: "PeaxelSolar", 
+        API_KEY: process.env.API_Solar, 
+        PRIVATE_KEY: process.env.PRIV_Solar 
       }
     },
     {
@@ -25,6 +49,3 @@ module.exports = {
     }
   ]
 };
-
-
-
