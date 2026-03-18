@@ -933,9 +933,15 @@ def main():
     else:
         fatal(f"❌ Gagal ngecek akun server! API Key salah atau server down.")
     # 🔥 BATAS TAMBAHAN 🔥
+
+    # BARI INI JANGAN SAMPAI ILANG JENDERAL! 👇
+    game_id, agent_id = load_session()
+    
+    resume_berhasil = False
     
     if game_id and agent_id:
         print(f"🔄 [{get_waktu()}] [{BOT_NAME}] Sesi VIP ditemukan! Coba RECONNECT...")
+        # ... (lanjut kodenya ke bawah) ...
         state = get_state(game_id, agent_id)
         
         if state and state != "MATI":
