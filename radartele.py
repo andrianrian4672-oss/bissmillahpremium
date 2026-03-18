@@ -9,7 +9,7 @@ print("=============================================")
 
 # ================= KONFIGURASI =================
 RPC_URL = "https://mainnet.crosstoken.io:22001"
-PROXY_ADDRESS = "0x6546dd2434a4245f48d3abd641622fe80868f408"
+PROXY_ADDRESS = "0x1eac541a95fd11f5d27848311d59e3b027427c02"
 TOKEN_ADDRESS = "0xdb99a97d607c5c5831263707E7b746312406ba7E"
 
 # Ambil kunci dari brankas Railway biar aman!
